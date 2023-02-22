@@ -348,10 +348,6 @@ func TestTriggerWithInvalidTransition(t *testing.T) {
 func TestInvaildEventError(t *testing.T) {
 	err := &InvalidEventError[TestEvent]{"invalid-event"}
 
-	if err == nil {
-		t.Error("InvalidEventError returned nil")
-	}
-
 	if err.Error() != "invalid event: invalid-event" {
 		t.Errorf("InvalidEventError returned invalid error: %v", err.Error())
 	}
@@ -360,10 +356,6 @@ func TestInvaildEventError(t *testing.T) {
 func TestInvalidStateError(t *testing.T) {
 	err := &InvalidStateError[TestState]{testStateA}
 
-	if err == nil {
-		t.Error("InvalidStateError returned nil")
-	}
-
 	if err.Error() != "invalid state: state-A" {
 		t.Errorf("InvalidStateError returned invalid error: %v", err.Error())
 	}
@@ -371,10 +363,6 @@ func TestInvalidStateError(t *testing.T) {
 
 func TestSameStateTransitionError(t *testing.T) {
 	err := &SameStateTransitionError[TestState]{testStateA}
-
-	if err == nil {
-		t.Error("SameStateTransitionError returned nil")
-	}
 
 	if err.Error() != "same state transition not allowed: state-A" {
 		t.Errorf("SameStateTransitionError returned invalid error: %v", err.Error())
